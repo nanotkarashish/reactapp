@@ -18,4 +18,13 @@ class CountBox extends React.Component {
     }
 }
 
+CountBox.defaultProps = {
+    items: [
+        'LIKE',
+        'DISLIKE',
+        'LIKE',
+        'LIKE'
+    ]
+}
+
 export default CountBox;

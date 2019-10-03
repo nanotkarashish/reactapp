@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ToggleBox from './ToggleBox';
 import CountBox from './CountBox';
 
@@ -26,11 +27,36 @@ class Parent extends React.Component {
 
     render() {
         return (
-            <div>
-                <ToggleBox toggle={this.toggle} items={this.state.items} />
-                <br />
-                <CountBox items={this.state.items} />
-            </div>
+            <Router>
+                <div>
+                    <nav>
+                        <ul>
+                            <li>
+                            <Link to="/">Home</Link>
+                            </li>
+                            <li>
+                            <Link to="/toggle">Toggle</Link>
+                            </li>
+                            <li>
+                            <Link to="/count">Count</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                    {/* A <Switch> looks through its children <Route>s and
+                        renders the first one that matches the current URL. */}
+                    <Switch>
+                        <Route path="/toggle">
+                            <ToggleBox />
+                        </Route>
+                        <Route path="/count">
+                            <CountBox />
+                        </Route>
+                        <Route path="/">
+                            <ToggleBox />
+                        </Route>
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }

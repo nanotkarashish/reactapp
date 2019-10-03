@@ -15,4 +15,19 @@ class ToggleBox extends React.Component {
     }
 }
 
+ToggleBox.defaultProps = {
+    items: [
+        'LIKE',
+        'DISLIKE',
+        'LIKE',
+        'LIKE'
+    ],
+    toggle: (index) => {
+        let item = this.state.items[index];
+        let items = this.state.items;
+        items[index] = item === "LIKE" ? "DISLIKE" : "LIKE"
+        this.setState({items: items});
+    }
+}
+
 export default ToggleBox;
